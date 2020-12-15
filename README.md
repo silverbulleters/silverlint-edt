@@ -1,0 +1,1 @@
+# SonarLint for EDT

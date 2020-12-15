@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.silverbulleters.dt.silverlint.feature">
+      <category name="org.silverbulleters.dt.silverlint.category"/>
+   </feature>
+   <category-def name="org.silverbulleters.dt.silverlint.category" label="SilverLint for EDT"/>
+</site>

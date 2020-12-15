@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.silverbulleters.dt.silverlint.feature"
+      label="%featureName"
+      version="0.1.0.qualifier"
+      provider-name="%providerName"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.2.qualifier">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.silverbulleters.dt.silverlint"
+         download-size="0"
+         install-size="0"
+         version="0.1.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.silverbulleters.dt.silverlint.ui"
+         download-size="0"
+         install-size="0"
+         version="0.1.0.qualifier"
+         unpack="false"/>
+
+</feature>

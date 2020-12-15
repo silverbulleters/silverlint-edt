@@ -8,10 +8,12 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
+import lombok.Getter;
+
 public class Activator extends Plugin {
     public static final String PLUGIN_ID = "org.silverbulleters.dt.silverlint.ui"; //$NON-NLS-1$
     private static Activator plugin;
-
+    @Getter
     private BundleContext bundleContext;
 
     public static Activator getDefault()
@@ -59,10 +61,5 @@ public class Activator extends Plugin {
     {
         plugin = null;
         super.stop(bundleContext);
-    }
-
-    protected BundleContext getContext()
-    {
-        return bundleContext;
     }
 }

@@ -1,0 +1,27 @@
+image: maven:3-jdk-11
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -Dtycho.localArtifacts=ignore -Dmaven.repo.local=/root/.m2/repository -s bom/settings.xml"
+
+cache:
+  key: "${CI_COMMIT_REF_SLUG}"
+  paths:
+    - /root/.m2/repository
+
+stages:
+  - build
+
+build:
+  stage: build
+  before_script:
+    - echo "<settingsSecurity><master>${MAVEN_MASTER}</master></settingsSecurity>" > /root/.m2/settings-security.xml 
+  script:
+    - cd silverlint-edt
+    - export MAVEN_OPTS=
+    - mvn ${MAVEN_CLI_OPTS} clean dependency:copy@get-lombok
+    - export MAVEN_OPTS=-javaagent:target/lombok.jar=ECJ
+    - mvn ${MAVEN_CLI_OPTS} verify -DskipTests
+  artifacts:
+    expire_in: 2 weeks
+    paths:
+      - silverlint-edt/repositories/org.silverbulleters.dt.silverlint.repository/target/*.zip

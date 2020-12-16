@@ -1,16 +1,13 @@
 /**
  * Copyright (C) 2020, SilverBulleters LLC
  */
-package org.silverbulleters.dt.silverlint.service;
+package org.silverbulleters.dt.silverlint.sonarlint;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.silverbulleters.dt.silverlint.ProjectSetting;
-import org.silverbulleters.dt.silverlint.sonarlint.CustomLogOutput;
-import org.silverbulleters.dt.silverlint.sonarlint.DefaultClientInputFile;
-import org.silverbulleters.dt.silverlint.sonarlint.StoreIssueListener;
+import org.silverbulleters.dt.silverlint.project.ProjectSetting;
 import org.sonarsource.sonarlint.core.ConnectedSonarLintEngineImpl;
 import org.sonarsource.sonarlint.core.client.api.common.Language;
 import org.sonarsource.sonarlint.core.client.api.common.LogOutput;
@@ -22,11 +19,6 @@ import org.sonarsource.sonarlint.core.client.api.connected.ServerConfiguration;
 public class LintService {
 	public static final String SOURCE = "sonarlint";
 	private static final String SERVER_ID = SOURCE;
-	
-//	private String token = "11cc533e056fc23e2782fbb39a4e82e478061453";
-//	private String projectKey = "demo-edt";
-//	private String serverUrl = "https://open.checkbsl.org/";
-
 	private ConnectedGlobalConfiguration configuration;
 	private ConnectedSonarLintEngineImpl connection;
 	private LogOutput logOutput = new CustomLogOutput();

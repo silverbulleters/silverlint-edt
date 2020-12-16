@@ -3,7 +3,8 @@
  */
 package org.silverbulleters.dt.silverlint;
 
-import org.silverbulleters.dt.silverlint.service.LintService;
+import org.silverbulleters.dt.silverlint.project.ProjectHelper;
+import org.silverbulleters.dt.silverlint.sonarlint.LintService;
 
 import lombok.Getter;
 

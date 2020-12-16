@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2020, SilverBulleters LLC
  */
-package org.silverbulleters.dt.silverlint;
+package org.silverbulleters.dt.silverlint.project;
 
 import java.nio.file.Path;
 import java.util.Optional;

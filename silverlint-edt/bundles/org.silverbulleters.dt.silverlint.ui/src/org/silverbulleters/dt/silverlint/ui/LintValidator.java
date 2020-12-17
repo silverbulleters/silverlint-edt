@@ -3,6 +3,7 @@
  */
 package org.silverbulleters.dt.silverlint.ui;
 
+import java.net.URI;
 import java.nio.file.Path;
 
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -13,7 +14,6 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
-import org.silverbulleters.dt.silverlint.SilverCore;
 import org.silverbulleters.dt.silverlint.project.ProjectHelper;
 import org.silverbulleters.dt.silverlint.sonarlint.LintHelper;
 import org.silverbulleters.dt.silverlint.ui.utils.ValidationUtils;
@@ -27,38 +27,46 @@ public class LintValidator implements IExternalBslValidator {
 	@Override
 	@Check(CheckType.EXPENSIVE)
 	public void validate(EObject object, CustomValidationMessageAcceptor messageAcceptor, CancelIndicator monitor) {
-		var core = SilverCore.getCore();
-		var service = core.getLintService();
-
-		var module = (Module) object;
-		var node = NodeModelUtils.findActualNodeFor(module);
-		var content = node.getText();
-		if (content == null) {
-			content = "";
-		}
-		var document = new Document(content);
-		var moduleFile = ResourcesPlugin.getWorkspace().getRoot()
-				.getFile(new org.eclipse.core.runtime.Path(EcoreUtil.getURI(module).toPlatformString(true)));
-		var uri = moduleFile.getLocationURI();
-
-		var project = ProjectHelper.getProjectByUri(Path.of(uri));
-		if (project.isEmpty()) {
+		var core = Activator.getDefault().getCore();
+		var module = (Module) object;		
+		var uri = getUriFromModule(module);
+		
+		var projectOpt = ProjectHelper.getProjectByUri(Path.of(uri));
+		if (projectOpt.isEmpty()) {
 			return;
 		}
-
-		var basePath = ProjectHelper.getProjectPath(project.get());
-
+		var project = projectOpt.get();
+		
+		var service = core.getLintManager().getService(project);
+		
+		var content = getContent(module);
+		var document = new Document(content);
+		
 		var inputFile = LintHelper.getInputFile(Path.of(uri));
-		var list = service.getDiagnostics(inputFile, basePath);
+		var list = service.getDiagnostics(inputFile, ProjectHelper.getProjectPath(project));
 		list.forEach(issue -> {
 			ValidationUtils.acceptIssue(module, messageAcceptor, issue, document);
 		});
-
 	}
 
 	@Override
 	public boolean needValidation(EObject object) {
 		return object instanceof Module;
+	}
+	
+	private String getContent(Module module) {
+		var node = NodeModelUtils.findActualNodeFor(module);
+		var content = node.getText();
+		if (content == null) {
+			content = "";
+		}
+		return content;
+	}
+	
+	private URI getUriFromModule(Module module) {
+		var moduleFile = ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(new org.eclipse.core.runtime.Path(EcoreUtil.getURI(module).toPlatformString(true)));
+		return moduleFile.getLocationURI();
 	}
 
 }

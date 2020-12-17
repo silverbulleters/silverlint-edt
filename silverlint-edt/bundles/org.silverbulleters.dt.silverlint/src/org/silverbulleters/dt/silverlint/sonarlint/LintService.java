@@ -5,6 +5,7 @@ package org.silverbulleters.dt.silverlint.sonarlint;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.silverbulleters.dt.silverlint.project.ProjectSetting;
@@ -64,8 +65,19 @@ public class LintService {
 	public boolean isAlive() {
 		return connection != null;
 	}
+	
+	private boolean isActive() {
+		if (!isAlive()) {
+			start();
+		}	
+		return isAlive();
+	}
 
 	public List<Issue> getDiagnostics(DefaultClientInputFile inputFile, Path basePath) {	
+		if (!isActive()) {
+			return Collections.emptyList();
+		}
+		
 		var analysisConfiguration = ConnectedAnalysisConfiguration.builder()
 			      .setBaseDir(basePath)
 			      .addInputFile(inputFile)

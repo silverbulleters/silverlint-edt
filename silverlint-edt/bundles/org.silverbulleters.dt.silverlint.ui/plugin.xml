@@ -7,4 +7,12 @@
             class="org.silverbulleters.dt.silverlint.ui.LintValidator">
       </externalValidator>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.silverbulleters.dt.silverlint.ui.preferences.PreferencePage"
+            id="org.silverbulleters.dt.silverlint.ui.preferences.page"
+            name="SilverLint">
+      </page>
+   </extension>
 </plugin>

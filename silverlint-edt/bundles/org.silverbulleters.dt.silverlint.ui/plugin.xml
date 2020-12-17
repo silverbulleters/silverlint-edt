@@ -15,4 +15,19 @@
             name="SilverLint">
       </page>
    </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.silverbulleters.dt.silverlint.ui.preferences.ProjectPreferensePage"
+            id="org.silverbulleters.dt.silverlint.ui.projectpage"
+            name="SilverLint">
+            <enabledWhen>
+		    <and>
+		        <instanceof
+		             value="org.eclipse.core.resources.IProject">
+		        </instanceof>
+		    </and>
+		    </enabledWhen>
+      </page>
+   </extension>
 </plugin>

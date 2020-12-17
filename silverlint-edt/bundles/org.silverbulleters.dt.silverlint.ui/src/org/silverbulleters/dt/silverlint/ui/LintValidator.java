@@ -10,6 +10,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Document;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.Check;
@@ -27,6 +28,12 @@ public class LintValidator implements IExternalBslValidator {
 	@Override
 	@Check(CheckType.EXPENSIVE)
 	public void validate(EObject object, CustomValidationMessageAcceptor messageAcceptor, CancelIndicator monitor) {
+		if (monitor.isCanceled()) {
+		    return;
+		}
+		
+		PlatformUI.getWorkbench().getWorkbenchWindows();
+		
 		var core = Activator.getDefault().getCore();
 		var module = (Module) object;		
 		var uri = getUriFromModule(module);
@@ -39,12 +46,21 @@ public class LintValidator implements IExternalBslValidator {
 		
 		var service = core.getLintManager().getService(project);
 		
+		if (monitor.isCanceled()) {
+		    return;
+		}
+		
 		var content = getContent(module);
 		var document = new Document(content);
 		
 		var inputFile = LintHelper.getInputFile(Path.of(uri));
 		var list = service.getDiagnostics(inputFile, ProjectHelper.getProjectPath(project));
+		
 		list.forEach(issue -> {
+			if (monitor.isCanceled()) {
+			    return;
+			}
+			
 			ValidationUtils.acceptIssue(module, messageAcceptor, issue, document);
 		});
 	}

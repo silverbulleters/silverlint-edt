@@ -12,7 +12,6 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ProjectHelper {
-	public final static ProjectSetting DEFAULT_PROJECT_SETTING = createDefaultProjectSetting();
 	public Optional<IProject> getProjectByUri(Path pathToFile) {
 		IProject project = null;
 		for (IProject currentProject : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
@@ -30,7 +29,7 @@ public class ProjectHelper {
 	}
 	
 	public ProjectSetting getProjectSettingByProject(IProject project) {
-		return DEFAULT_PROJECT_SETTING;
+		return getProjectFromScope();
 	}
 	
 	public ProjectSetting getProjectFromScope() {
@@ -39,14 +38,6 @@ public class ProjectHelper {
 		setting.setServerUrl(store.getString(PreferenceManager.SONAR_URL));
 		setting.setToken(store.getString(PreferenceManager.SONAR_TOKEN));
 		setting.setProjectKey(store.getString(PreferenceManager.SONAR_PROJECT_KEY));
-		return setting;
-	}
-	
-	private static ProjectSetting createDefaultProjectSetting() {
-		var setting = new ProjectSetting();
-		setting.setToken("11cc533e056fc23e2782fbb39a4e82e478061453");
-		setting.setServerUrl("https://open.checkbsl.org/");
-		setting.setProjectKey("demo-edt");
 		return setting;
 	}
 }

@@ -26,4 +26,5 @@ Import-Package: com._1c.g5.v8.dt.metadata.mdclass;version="8.3.0",
  lombok.experimental;resolution:=optional,
  org.eclipse.core.commands.common,
  org.eclipse.jface.preference,
+ org.eclipse.jface.util,
  org.eclipse.ui.preferences

@@ -61,5 +61,6 @@ public class LintServiceManager {
 	
 	public void stopAll( ) {
 		pool.values().forEach(LintService::stop);
+		pool.clear();
 	}
 }

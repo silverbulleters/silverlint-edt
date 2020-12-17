@@ -2,6 +2,8 @@ package org.silverbulleters.dt.silverlint;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 import lombok.Getter;
@@ -17,9 +19,19 @@ public class PreferenceManager {
 	
 	@Getter
 	private IPreferenceStore preferenceStore;
+	private IPropertyChangeListener listener;
 	
 	public PreferenceManager(String pluginId) {
 		this.pluginId = pluginId;
+		
+		listener = new IPropertyChangeListener() {		
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				SilverCore.getCore().getLintManager().stopAll();
+				// FIXME: происходит несколько раз. Переделать
+				initialize();
+			}
+		};
 	}
 	
 	public void initialize() {
@@ -28,6 +40,7 @@ public class PreferenceManager {
 		preferenceStore.setDefault(SONAR_URL, DEFAULT_SONAR_URL);
 		preferenceStore.setDefault(SONAR_TOKEN, "");
 		preferenceStore.setDefault(SONAR_PROJECT_KEY, "");
+		preferenceStore.addPropertyChangeListener(listener);
 	}
 	
 }

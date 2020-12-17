@@ -16,6 +16,7 @@ public class SilverCore {
 	@Getter(lazy = true)
 	private static final SilverCore core = new SilverCore();
 	
+	@Getter
 	private final PreferenceManager preferenseManager;
 	
 	@Getter

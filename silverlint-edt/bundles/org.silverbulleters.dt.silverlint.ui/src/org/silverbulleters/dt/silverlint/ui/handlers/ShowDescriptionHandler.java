@@ -6,13 +6,12 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.IHandler;
-import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+
 import org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView;
 
 public class ShowDescriptionHandler extends AbstractHandler {
@@ -23,12 +22,12 @@ public class ShowDescriptionHandler extends AbstractHandler {
 		
 		List<IMarker> selectedSonarMarkers = new ArrayList<>();
 
-	    @SuppressWarnings("rawtypes")
-	    List elems = selection.toList();
-	    for (Object elem : elems) {
-	      IMarker marker = Adapters.adapt(elem, IMarker.class);
-	      if (marker != null) {
-	        selectedSonarMarkers.add(marker);
+		@SuppressWarnings("rawtypes")
+		List elems = selection.toList();
+		for (Object elem : elems) {
+			IMarker marker = Adapters.adapt(elem, IMarker.class);
+			if (marker != null) {
+				selectedSonarMarkers.add(marker);
 	      }
 	    }
 

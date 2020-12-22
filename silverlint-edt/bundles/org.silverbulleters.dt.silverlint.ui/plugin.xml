@@ -40,6 +40,7 @@
       <view
             category="com._1c.g5.v8.dt.ui.v8category"
             class="org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView"
+            icon="icons/rule.png"
             id="org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView"
             name="Описание правила проверки"
             restorable="true">

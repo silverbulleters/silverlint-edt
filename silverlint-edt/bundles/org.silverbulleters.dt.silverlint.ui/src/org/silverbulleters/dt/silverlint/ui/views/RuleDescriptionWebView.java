@@ -76,6 +76,13 @@ public class RuleDescriptionWebView extends ViewPart implements ISelectionListen
 			}
 		}
 	}
+	
+	@Override
+	public void dispose() {
+		stopListeningForSelectionChanges();
+
+		super.dispose();
+	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -168,7 +175,7 @@ public class RuleDescriptionWebView extends ViewPart implements ISelectionListen
 		}
 		
 		var projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-		if (projects.length == 0) {
+		if (projects.length == 0 || !ruleKey.startsWith("bsl:")) {
 			return;
 		}
 		

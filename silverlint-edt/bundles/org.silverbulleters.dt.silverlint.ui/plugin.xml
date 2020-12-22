@@ -34,15 +34,6 @@
                style="push">
          </command>
       </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:com._1c.g5.v8.dt.ui.problemView">
-         <command
-               commandId="org.silverbulleters.dt.silverlint.ui.RuleDescription"
-               label="Показать описание правила"
-               style="push">
-         </command>
-      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.views">

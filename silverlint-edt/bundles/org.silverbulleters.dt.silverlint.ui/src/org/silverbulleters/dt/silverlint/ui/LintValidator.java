@@ -45,6 +45,9 @@ public class LintValidator implements IExternalBslValidator {
 		var project = projectOpt.get();
 		
 		var service = core.getLintManager().getService(project);
+		if (!service.projectSettingIsValid()) {
+			return;
+		}
 		
 		if (monitor.isCanceled()) {
 		    return;

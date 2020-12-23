@@ -35,6 +35,10 @@ public class LintService {
 		configuration = ConnectedGlobalConfiguration.builder().setLogOutput(logOutput).addEnabledLanguage(Language.BSL)
 				.setServerId(SERVER_ID).build();
 	}
+	
+	public boolean projectSettingIsValid() {	
+		return !projectSetting.getProjectKey().isEmpty();
+	}
 
 	public void start() {
 		var serverConfiguration = ServerConfiguration.builder().token(projectSetting.getToken())

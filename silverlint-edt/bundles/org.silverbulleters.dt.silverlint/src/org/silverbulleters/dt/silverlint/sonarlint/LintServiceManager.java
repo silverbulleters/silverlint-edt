@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.eclipse.core.resources.IProject;
 import org.silverbulleters.dt.silverlint.project.ProjectHelper;
-import org.silverbulleters.dt.silverlint.project.ProjectSetting;
 
 import lombok.Getter;
 
@@ -35,8 +34,8 @@ public class LintServiceManager {
 		if (pool.containsKey(project)) {
 			service = pool.get(project);
 		} else {
-			ProjectSetting projectSetting = ProjectHelper.getProjectFromScope();
-			service = new LintService(projectSetting);	
+			var setting = ProjectHelper.getProjectSettingByProject(project);
+			service = new LintService(setting);	
 		}
 		return service;
 	}
@@ -55,6 +54,13 @@ public class LintServiceManager {
 
 	public void removeService(IProject project) {
 		if (pool.containsKey(project)) {
+			pool.remove(project);
+		}
+	}
+	
+	public void stopByProject(IProject project) {
+		if (pool.containsKey(project)) {
+			pool.get(project).stop();
 			pool.remove(project);
 		}
 	}

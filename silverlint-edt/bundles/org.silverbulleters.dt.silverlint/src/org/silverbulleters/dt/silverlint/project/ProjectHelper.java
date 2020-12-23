@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.silverbulleters.dt.silverlint.PreferenceManager;
 import org.silverbulleters.dt.silverlint.SilverCore;
 
@@ -29,15 +30,16 @@ public class ProjectHelper {
 	}
 	
 	public ProjectSetting getProjectSettingByProject(IProject project) {
-		return getProjectFromScope();
+		var globalStore = getGlobalStore();
+		var projectStore = SilverCore.getCore().getPreferenseManager().getStoreByProject(project);	
+		var setting = new ProjectSetting();
+		setting.setServerUrl(globalStore.getString(PreferenceManager.SONAR_URL));
+		setting.setToken(globalStore.getString(PreferenceManager.SONAR_TOKEN));
+		setting.setProjectKey(projectStore.getString(PreferenceManager.SONAR_PROJECT_KEY));	
+		return setting;
 	}
 	
-	public ProjectSetting getProjectFromScope() {
-		var store = SilverCore.getCore().getInstancePreferenseStore();
-		var setting = new ProjectSetting();
-		setting.setServerUrl(store.getString(PreferenceManager.SONAR_URL));
-		setting.setToken(store.getString(PreferenceManager.SONAR_TOKEN));
-		setting.setProjectKey(store.getString(PreferenceManager.SONAR_PROJECT_KEY));
-		return setting;
+	private IPreferenceStore getGlobalStore() {
+		return SilverCore.getCore().getInstancePreferenseStore();
 	}
 }

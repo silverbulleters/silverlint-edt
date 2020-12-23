@@ -14,6 +14,7 @@ import org.silverbulleters.dt.silverlint.project.ProjectSetting;
 import org.sonarsource.sonarlint.core.ConnectedSonarLintEngineImpl;
 import org.sonarsource.sonarlint.core.client.api.common.Language;
 import org.sonarsource.sonarlint.core.client.api.common.LogOutput;
+import org.sonarsource.sonarlint.core.client.api.common.RuleDetails;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.connected.ConnectedAnalysisConfiguration;
 import org.sonarsource.sonarlint.core.client.api.connected.ConnectedGlobalConfiguration;
@@ -121,5 +122,9 @@ public class LintService {
 			futureTask.cancel(true);
 		}
 		threadpool.shutdown();
+	}
+	
+	public RuleDetails getRuleDescription(String ruleKey) {
+		return connection.getRuleDetails(ruleKey);
 	}
 }

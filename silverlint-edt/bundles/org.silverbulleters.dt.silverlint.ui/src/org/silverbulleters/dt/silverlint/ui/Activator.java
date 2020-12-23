@@ -7,12 +7,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.silverbulleters.dt.silverlint.SilverCore;
 
 import lombok.Getter;
 
-public class Activator extends Plugin {
+public class Activator extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = SilverCore.PLUGIN_ID; //$NON-NLS-1$
 	private static Activator plugin;
 	@Getter

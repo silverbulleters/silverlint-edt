@@ -1,4 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="com._1c.g5.v8.dt.bsl.externalBslValidator">
+      <externalValidator
+            class="org.silverbulleters.dt.silverlint.ui.LintValidator">
+      </externalValidator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.silverbulleters.dt.silverlint.ui.preferences.PreferencePage"
+            id="org.silverbulleters.dt.silverlint.ui.preferences.page"
+            name="SilverLint">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.silverbulleters.dt.silverlint.ui.preferences.ProjectPreferensePage"
+            id="org.silverbulleters.dt.silverlint.ui.projectpage"
+            name="SilverLint">
+            <enabledWhen>
+		    <and>
+		        <instanceof
+		             value="org.eclipse.core.resources.IProject">
+		        </instanceof>
+		    </and>
+		    </enabledWhen>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.silverbulleters.dt.silverlint.ui.handlers.ShowDescriptionHandler"
+            id="org.silverbulleters.dt.silverlint.ui.RuleDescription"
+            name="ShowRuleDescription">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.views.ProblemView">
+         <command
+               commandId="org.silverbulleters.dt.silverlint.ui.RuleDescription"
+               label="Показать описание правила"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="com._1c.g5.v8.dt.ui.v8category"
+            class="org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView"
+            icon="icons/rule.png"
+            id="org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView"
+            name="Описание правила проверки"
+            restorable="true">
+      </view>
+   </extension>
 </plugin>

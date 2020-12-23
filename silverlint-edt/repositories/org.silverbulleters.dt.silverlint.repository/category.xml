@@ -3,5 +3,7 @@
    <feature id="org.silverbulleters.dt.silverlint.feature">
       <category name="org.silverbulleters.dt.silverlint.category"/>
    </feature>
+   <bundle id="org.sonarsource.sonarlint.core.sonarlint-client-api"/>
+   <bundle id="org.sonarsource.sonarlint.core.sonarlint-core"/>
    <category-def name="org.silverbulleters.dt.silverlint.category" label="SilverLint for EDT"/>
 </site>

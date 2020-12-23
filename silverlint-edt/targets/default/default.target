@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="1C:EDT Sapphire Platform" sequenceNumber="1">
+<?pde version="3.8"?>
+<target name="1C:EDT Sapphire Platform" sequenceNumber="1">
 <locations>
 <!-- EDT -->
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -114,5 +115,14 @@
 <repository location="https://otymko.github.io/edt-p2-registry/update/lombok/1.18.16/"/>
 <unit id="org.projectlombok.lombok" version="1.18.16"/>
 </location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+		<repository location="https://edt.checkbsl.org/registry/p2/sonarlint-core/v4.14-bsl/"/>
+		<unit id="org.sonarsource.sonarlint.core.sonarlint-client-api" version="4.14.1.SNAPSHOT"/>
+		<unit id="org.sonarsource.sonarlint.core.sonarlint-core" version="4.14.1.SNAPSHOT"/>
+	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+		<repository location="http://download.eclipse.org/eclipse/updates/4.16/"/>
+		<unit id="org.eclipse.pde.source.feature.group" version="3.14.400.v20200604-0540"/>
+	</location>
 </locations>
 </target>

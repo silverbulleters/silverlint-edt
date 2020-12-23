@@ -6,11 +6,25 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: org.silverbulleters.dt.silverlint;singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Require-Bundle: com._1c.g5.v8.dt.bsl;bundle-version="[17.0.0,18.0.0)",
- com._1c.g5.v8.dt.bsl.model;bundle-version="[6.4.100,7.0.0)",
+Require-Bundle: com._1c.g5.v8.dt.bsl;bundle-version="17.0.0",
+ com._1c.g5.v8.dt.bsl.model;bundle-version="6.4.100",
  org.eclipse.emf.ecore;bundle-version="[2.18.0,3.0.0)",
  org.eclipse.xtext;bundle-version="[2.18.0,3.0.0)",
- com._1c.g5.v8.dt.mcore;bundle-version="[7.0.0,8.0.0)"
+ com._1c.g5.v8.dt.mcore;bundle-version="[7.0.0,8.0.0)",
+ org.sonarsource.sonarlint.core.sonarlint-client-api;bundle-version="4.14.1",
+ org.sonarsource.sonarlint.core.sonarlint-core;bundle-version="4.14.1",
+ org.eclipse.jface.text;bundle-version="3.15.200",
+ org.eclipse.core.resources;bundle-version="3.13.400",
+ org.eclipse.core.runtime;bundle-version="3.15.300"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.silverbulleters.dt.silverlint
-Export-Package: org.silverbulleters.dt.silverlint;version="0.1.0"
+Export-Package: org.silverbulleters.dt.silverlint;version="0.1.0",
+ org.silverbulleters.dt.silverlint.project,
+ org.silverbulleters.dt.silverlint.sonarlint
+Import-Package: com._1c.g5.v8.dt.metadata.mdclass;version="8.3.0",
+ lombok;resolution:=optional,
+ lombok.experimental;resolution:=optional,
+ org.eclipse.core.commands.common,
+ org.eclipse.jface.preference,
+ org.eclipse.jface.util,
+ org.eclipse.ui.preferences

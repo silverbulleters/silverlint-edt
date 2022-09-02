@@ -16,9 +16,9 @@ import org.silverbulleters.dt.silverlint.PreferenceManager;
 import org.silverbulleters.dt.silverlint.SilverCore;
 import org.silverbulleters.dt.silverlint.ui.Activator;
 
-public class ProjectPreferensePage extends PropertyPage implements IWorkbenchPropertyPage {
+public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPropertyPage {
 	private final SilverCore core = Activator.getDefault().getCore();
-	private final PreferenceManager preferenceManager = core.getPreferenseManager();
+	private final PreferenceManager preferenceManager = core.getPreferenceManager();
 	private IProject project;
 
 	@Override

@@ -18,7 +18,7 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="org.silverbulleters.dt.silverlint.ui.preferences.ProjectPreferensePage"
+            class="org.silverbulleters.dt.silverlint.ui.preferences.ProjectPreferencePage"
             id="org.silverbulleters.dt.silverlint.ui.projectpage"
             name="SilverLint">
             <enabledWhen>

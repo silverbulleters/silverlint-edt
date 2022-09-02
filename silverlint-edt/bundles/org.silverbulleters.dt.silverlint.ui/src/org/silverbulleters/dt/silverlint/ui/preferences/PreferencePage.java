@@ -11,7 +11,7 @@ import org.silverbulleters.dt.silverlint.ui.Activator;
 public class PreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public PreferencePage() {
-		setPreferenceStore(Activator.getDefault().getCore().getInstancePreferenseStore());
+		setPreferenceStore(Activator.getDefault().getCore().getInstancePreferenceStore());
 	}
 
 	@Override

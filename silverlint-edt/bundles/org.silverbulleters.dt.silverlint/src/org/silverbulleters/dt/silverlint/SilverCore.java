@@ -17,7 +17,7 @@ public class SilverCore {
 	private static final SilverCore core = new SilverCore();
 	
 	@Getter
-	private final PreferenceManager preferenseManager;
+	private final PreferenceManager preferenceManager;
 	
 	@Getter
 	private final LintServiceManager lintManager;
@@ -27,8 +27,8 @@ public class SilverCore {
 	
 	private SilverCore() {
 		super();	
-		preferenseManager = new PreferenceManager(PLUGIN_ID);	
-		preferenseManager.initialize();
+		preferenceManager = new PreferenceManager(PLUGIN_ID);
+		preferenceManager.initialize();
 		
 		lintManager = new LintServiceManager();
 	}
@@ -41,8 +41,8 @@ public class SilverCore {
     	lintManager.stopAll();
     }
     
-    public IPreferenceStore getInstancePreferenseStore() {
-    	return preferenseManager.getPreferenceStore();
+    public IPreferenceStore getInstancePreferenceStore() {
+    	return preferenceManager.getPreferenceStore();
     }
  
 }

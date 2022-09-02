@@ -31,7 +31,7 @@ public class ProjectHelper {
 	
 	public ProjectSetting getProjectSettingByProject(IProject project) {
 		var globalStore = getGlobalStore();
-		var projectStore = SilverCore.getCore().getPreferenseManager().getStoreByProject(project);	
+		var projectStore = SilverCore.getCore().getPreferenceManager().getStoreByProject(project);
 		var setting = new ProjectSetting();
 		setting.setServerUrl(globalStore.getString(PreferenceManager.SONAR_URL));
 		setting.setToken(globalStore.getString(PreferenceManager.SONAR_TOKEN));
@@ -40,6 +40,6 @@ public class ProjectHelper {
 	}
 	
 	private IPreferenceStore getGlobalStore() {
-		return SilverCore.getCore().getInstancePreferenseStore();
+		return SilverCore.getCore().getInstancePreferenceStore();
 	}
 }

@@ -21,7 +21,9 @@ import org.sonarsource.sonarlint.core.client.api.connected.ConnectedGlobalConfig
 import org.sonarsource.sonarlint.core.client.api.connected.ServerConfiguration;
 
 public class LintService {
+
 	public static final String SOURCE = "sonarlint";
+
 	private static final String SERVER_ID = SOURCE;
 	private static final int DEFAULT_TIMEOUT = 30;
 

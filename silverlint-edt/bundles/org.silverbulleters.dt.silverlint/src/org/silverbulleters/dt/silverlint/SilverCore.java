@@ -8,21 +8,14 @@ import org.silverbulleters.dt.silverlint.project.ProjectSetting;
 import org.silverbulleters.dt.silverlint.sonarlint.LintService;
 import org.silverbulleters.dt.silverlint.sonarlint.LintServiceManager;
 
-import lombok.Getter;
-
 public class SilverCore {
+
 	public static final String PLUGIN_ID = "org.silverbulleters.dt.silverlint.ui";
-	
-	@Getter(lazy = true)
+
 	private static final SilverCore core = new SilverCore();
-	
-	@Getter
+
 	private final PreferenceManager preferenceManager;
-	
-	@Getter
 	private final LintServiceManager lintManager;
-	
-	@Getter
     private LintService lintService;
 	
 	private SilverCore() {
@@ -44,5 +37,20 @@ public class SilverCore {
     public IPreferenceStore getInstancePreferenceStore() {
     	return preferenceManager.getPreferenceStore();
     }
- 
+
+	public PreferenceManager getPreferenceManager() {
+		return preferenceManager;
+	}
+
+	public LintServiceManager getLintManager() {
+		return lintManager;
+	}
+
+	public LintService getLintService() {
+		return lintService;
+	}
+
+	public static SilverCore getCore() {
+		return SilverCore.core;
+	}
 }

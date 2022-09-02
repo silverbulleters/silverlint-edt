@@ -8,10 +8,8 @@ import java.util.Optional;
 import org.eclipse.core.resources.IProject;
 import org.silverbulleters.dt.silverlint.project.ProjectHelper;
 
-import lombok.Getter;
-
 public class LintServiceManager {
-	@Getter
+
 	private Map<IProject, LintService> pool = Collections.synchronizedMap(new HashMap<>());
 	
 	public LintService getService(IProject project) {
@@ -68,5 +66,9 @@ public class LintServiceManager {
 	public void stopAll( ) {
 		pool.values().forEach(LintService::stop);
 		pool.clear();
+	}
+
+	public Map<IProject, LintService> getPool() {
+		return pool;
 	}
 }

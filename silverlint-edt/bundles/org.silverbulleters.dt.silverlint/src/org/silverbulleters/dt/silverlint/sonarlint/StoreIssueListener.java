@@ -8,10 +8,8 @@ import java.util.List;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 
-import lombok.Getter;
-
 public class StoreIssueListener implements IssueListener {
-	@Getter
+
 	private final List<Issue> issues;
 
 	public StoreIssueListener(List<Issue> issues) {
@@ -21,5 +19,9 @@ public class StoreIssueListener implements IssueListener {
 	@Override
 	public void handle(Issue issue) {
 		issues.add(issue);
+	}
+
+	public List<Issue> getIssues() {
+		return issues;
 	}
 }

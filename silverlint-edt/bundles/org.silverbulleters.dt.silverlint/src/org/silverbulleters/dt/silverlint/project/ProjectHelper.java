@@ -9,11 +9,13 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.silverbulleters.dt.silverlint.PreferenceManager;
 import org.silverbulleters.dt.silverlint.SilverCore;
 
-import lombok.experimental.UtilityClass;
+public final class ProjectHelper {
 
-@UtilityClass
-public class ProjectHelper {
-	public Optional<IProject> getProjectByUri(Path pathToFile) {
+	private ProjectHelper() {
+		throw new UnsupportedOperationException();
+	}
+
+	public static Optional<IProject> getProjectByUri(Path pathToFile) {
 		IProject project = null;
 		for (IProject currentProject : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
 			var pathProject = getProjectPath(currentProject);
@@ -25,11 +27,11 @@ public class ProjectHelper {
 		return Optional.ofNullable(project);
 	}
 
-	public Path getProjectPath(IProject project) {
+	public static Path getProjectPath(IProject project) {
 		return project.getLocation().toFile().toPath();
 	}
 	
-	public ProjectSetting getProjectSettingByProject(IProject project) {
+	public static ProjectSetting getProjectSettingByProject(IProject project) {
 		var globalStore = getGlobalStore();
 		var projectStore = SilverCore.getCore().getPreferenceManager().getStoreByProject(project);
 		var setting = new ProjectSetting();
@@ -39,7 +41,7 @@ public class ProjectHelper {
 		return setting;
 	}
 	
-	private IPreferenceStore getGlobalStore() {
+	private static IPreferenceStore getGlobalStore() {
 		return SilverCore.getCore().getInstancePreferenceStore();
 	}
 }

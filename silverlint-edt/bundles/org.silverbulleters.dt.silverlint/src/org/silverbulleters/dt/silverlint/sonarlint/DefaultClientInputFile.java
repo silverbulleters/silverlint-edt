@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.ClientInputFile;
 
 public class DefaultClientInputFile implements ClientInputFile{
+
 	private final String path;
 	private final String relativePath;
 	private final boolean test;

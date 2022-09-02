@@ -10,14 +10,16 @@ import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import com._1c.g5.v8.dt.bsl.model.Module;
 import com._1c.g5.v8.dt.bsl.validation.CustomValidationMessageAcceptor;
 
-import lombok.experimental.UtilityClass;
+public final class ValidationUtils {
 
-@UtilityClass
-public class ValidationUtils {
-	private final String ISSUE_PREFIX = "[SonarLint]";
+	private static final String ISSUE_PREFIX = "[SonarLint]";
 
-	public void acceptIssue(Module module, CustomValidationMessageAcceptor messageAcceptor, Issue issue,
-			Document document) {
+	private ValidationUtils() {
+		throw new UnsupportedOperationException();
+	}
+
+	public static void acceptIssue(Module module, CustomValidationMessageAcceptor messageAcceptor, Issue issue,
+								   Document document) {
 
 		int[] offsetParams;
 		try {
@@ -40,7 +42,7 @@ public class ValidationUtils {
 
 	}
 
-	private int[] getOffsetByRange(Issue issue, Document document) throws BadLocationException {
+	private static int[] getOffsetByRange(Issue issue, Document document) throws BadLocationException {
 		var offset = 0;
 		var lenght = 0;
 		if (issue.getStartLine() == null) {

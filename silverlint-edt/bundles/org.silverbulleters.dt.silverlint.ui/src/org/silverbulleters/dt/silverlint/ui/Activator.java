@@ -11,16 +11,14 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.silverbulleters.dt.silverlint.SilverCore;
 
-import lombok.Getter;
-
 public class Activator extends AbstractUIPlugin {
+
 	public static final String PLUGIN_ID = SilverCore.PLUGIN_ID; //$NON-NLS-1$
+
 	private static Activator plugin;
-	@Getter
+
 	private BundleContext bundleContext;
-	@Getter
 	private IPreferenceStore preferenceStore;
-	@Getter
 	private SilverCore core;
 
 	public static Activator getDefault() {
@@ -61,5 +59,17 @@ public class Activator extends AbstractUIPlugin {
 		super.stop(bundleContext);
 		core.clean();
 		core = null;
+	}
+
+	public BundleContext getBundleContext() {
+		return bundleContext;
+	}
+
+	public IPreferenceStore getPreferenceStore() {
+		return preferenceStore;
+	}
+
+	public SilverCore getCore() {
+		return core;
 	}
 }

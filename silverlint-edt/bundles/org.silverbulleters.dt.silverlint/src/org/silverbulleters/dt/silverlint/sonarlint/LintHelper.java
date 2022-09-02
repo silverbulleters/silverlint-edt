@@ -6,14 +6,14 @@ package org.silverbulleters.dt.silverlint.sonarlint;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 
-import lombok.experimental.UtilityClass;
+public final class LintHelper {
 
-@UtilityClass
-public class LintHelper {
+	private LintHelper() {
+		throw new UnsupportedOperationException();
+	}
 
-	public DefaultClientInputFile getInputFile(Path path) {
+	public static DefaultClientInputFile getInputFile(Path path) {
 		return new DefaultClientInputFile(path.toString(), path.toString(), false, Charset.defaultCharset(),
 				path.toUri());
 	}
-
 }

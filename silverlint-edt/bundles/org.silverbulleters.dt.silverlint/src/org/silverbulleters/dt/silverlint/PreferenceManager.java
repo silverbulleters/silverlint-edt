@@ -12,9 +12,8 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 
-import lombok.Getter;
-
 public class PreferenceManager {
+
 	public static final String SONAR_ENABLE = "SONAR_ENABLE";
 	public static final String SONAR_URL = "SONAR_URL";
 	public static final String SONAR_TOKEN = "SONAR_TOKEN";
@@ -23,7 +22,6 @@ public class PreferenceManager {
 	private final String pluginId;
 	private final String DEFAULT_SONAR_URL = "http://localhost:9000/";
 	
-	@Getter
 	private IPreferenceStore preferenceStore;
 	private IPropertyChangeListener listener;
 	private Map<IProject, IPreferenceStore> storeByProjects = Collections.synchronizedMap(new HashMap<>());
@@ -58,5 +56,9 @@ public class PreferenceManager {
 			storeByProjects.put(project, store);
 		}
 		return store;
+	}
+
+	public IPreferenceStore getPreferenceStore() {
+		return preferenceStore;
 	}
 }

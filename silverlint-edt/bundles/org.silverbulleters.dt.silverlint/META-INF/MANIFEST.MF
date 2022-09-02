@@ -22,8 +22,6 @@ Export-Package: org.silverbulleters.dt.silverlint;version="0.1.1",
  org.silverbulleters.dt.silverlint.project,
  org.silverbulleters.dt.silverlint.sonarlint
 Import-Package: com._1c.g5.v8.dt.metadata.mdclass;version="8.3.0",
- lombok;resolution:=optional,
- lombok.experimental;resolution:=optional,
  org.eclipse.core.commands.common,
  org.eclipse.jface.preference,
  org.eclipse.jface.util,

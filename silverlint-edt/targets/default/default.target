@@ -111,10 +111,6 @@
 <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/cbi/updates/license/2.0.2.v20181016-2210"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<repository location="https://otymko.github.io/edt-p2-registry/update/lombok/1.18.16/"/>
-<unit id="org.projectlombok.lombok" version="1.18.16"/>
-</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 		<repository location="https://edt.checkbsl.org/registry/p2/sonarlint-core/v4.14-bsl/"/>
 		<unit id="org.sonarsource.sonarlint.core.sonarlint-client-api" version="4.14.1.SNAPSHOT"/>

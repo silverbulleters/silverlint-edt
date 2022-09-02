@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.silverbulleters.dt.silverlint</groupId>
     <artifactId>repositories</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.silverbulleters.dt.silverlint.repository.sdk</artifactId>

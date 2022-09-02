@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020, SilverBulleters LLC
+ * Copyright (C) 2022, SilverBulleters LLC
  */
 package org.silverbulleters.dt.silverlint.sonarlint;
 

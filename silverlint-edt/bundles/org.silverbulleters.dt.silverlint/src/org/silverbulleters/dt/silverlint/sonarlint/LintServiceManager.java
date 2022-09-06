@@ -15,7 +15,7 @@ public class LintServiceManager {
 	public LintService getService(IProject project) {
 		var serviceOpt = getServiceByProject(project);
 		if (serviceOpt.isEmpty()) {
-			var service = createServiveByProject(project);
+			var service = createServiceByProject(project);
 			registerService(service, project);
 			return service;
 		}
@@ -27,7 +27,7 @@ public class LintServiceManager {
 		return Optional.ofNullable(service);
 	}
 
-	public LintService createServiveByProject(IProject project) {
+	public LintService createServiceByProject(IProject project) {
 		LintService service;
 		if (pool.containsKey(project)) {
 			service = pool.get(project);

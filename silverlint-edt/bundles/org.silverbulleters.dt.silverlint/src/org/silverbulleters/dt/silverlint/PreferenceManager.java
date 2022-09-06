@@ -14,7 +14,6 @@ import org.eclipse.core.resources.ProjectScope;
 
 public class PreferenceManager {
 
-	public static final String SONAR_ENABLE = "SONAR_ENABLE";
 	public static final String SONAR_URL = "SONAR_URL";
 	public static final String SONAR_TOKEN = "SONAR_TOKEN";
 	public static final String SONAR_PROJECT_KEY = "SONAR_PROJECT_KEY";
@@ -41,7 +40,6 @@ public class PreferenceManager {
 	
 	public void initialize() {
 		preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, pluginId);
-		preferenceStore.setDefault(SONAR_ENABLE, true);
 		preferenceStore.setDefault(SONAR_URL, DEFAULT_SONAR_URL);
 		preferenceStore.setDefault(SONAR_TOKEN, "");
 		preferenceStore.addPropertyChangeListener(listener);

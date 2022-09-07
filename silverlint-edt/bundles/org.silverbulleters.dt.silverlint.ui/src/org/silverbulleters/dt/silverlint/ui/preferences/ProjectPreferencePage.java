@@ -14,12 +14,15 @@ import org.eclipse.ui.IWorkbenchPropertyPage;
 import org.eclipse.ui.dialogs.PropertyPage;
 import org.silverbulleters.dt.silverlint.PreferenceManager;
 import org.silverbulleters.dt.silverlint.SilverCore;
-import org.silverbulleters.dt.silverlint.ui.Activator;
+import org.silverbulleters.dt.silverlint.ui.BSLPlugin;
 
 public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPropertyPage {
-	private final SilverCore core = Activator.getDefault().getCore();
+
+    private final SilverCore core = BSLPlugin.getDefault().getCore();
 	private final PreferenceManager preferenceManager = core.getPreferenceManager();
 	private IProject project;
+
+    private String keyValue = "";
 
 	@Override
 	protected Control createContents(Composite parent) {
@@ -30,16 +33,18 @@ public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPro
 		var container = new Composite(parent, 0);
 		container.setLayoutData(gridData);
 		var field = new StringFieldEditor(PreferenceManager.SONAR_PROJECT_KEY, "Ключ проекта", container);
-		field.setStringValue(getPreferenceStore().getString(PreferenceManager.SONAR_PROJECT_KEY));
+        field.setStringValue(keyValue);
 		field.setPropertyChangeListener(new IPropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent event) {
 				if (event.getSource() instanceof FieldEditor) {
 					var field = (FieldEditor) event.getSource();
 					if (field.getPreferenceName().equals(PreferenceManager.SONAR_PROJECT_KEY)) {
-						getPreferenceStore().setValue(PreferenceManager.SONAR_PROJECT_KEY,
-								(String) event.getNewValue());			
-						core.getLintManager().stopByProject(project);
+                        try {
+                            keyValue = (String)event.getNewValue();
+                        } catch (ClassCastException ex) {
+                            keyValue = "";
+                        }
 					}
 				}
 			}
@@ -49,8 +54,17 @@ public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPro
 	}
 
 	private void initialize() {
-		project = (IProject) getElement().getAdapter(IProject.class);
+		project = getElement().getAdapter(IProject.class);
 		setPreferenceStore(preferenceManager.getStoreByProject(project));
+        keyValue = getPreferenceStore().getString(PreferenceManager.SONAR_PROJECT_KEY);
 	}
+
+    @Override
+    public boolean performOk() {
+        getPreferenceStore().setValue(PreferenceManager.SONAR_PROJECT_KEY, keyValue);
+        core.getLintManager().stopByProject(project);
+        SilverCore.logInfo("Изменен ключ проекта: " + keyValue);
+        return super.performOk();
+    }
 
 }

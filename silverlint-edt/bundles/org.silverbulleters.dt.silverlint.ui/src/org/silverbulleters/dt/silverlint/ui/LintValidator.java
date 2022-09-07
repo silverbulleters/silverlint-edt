@@ -34,7 +34,7 @@ public class LintValidator implements IExternalBslValidator {
 		
 		PlatformUI.getWorkbench().getWorkbenchWindows();
 		
-		var core = Activator.getDefault().getCore();
+		var core = BSLPlugin.getDefault().getCore();
 		var module = (Module) object;		
 		var uri = getUriFromModule(module);
 		

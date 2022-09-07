@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Version: 0.1.1.qualifier
 Bundle-SymbolicName: org.silverbulleters.dt.silverlint.ui;singleton:=true
-Bundle-Activator: org.silverbulleters.dt.silverlint.ui.Activator
+Bundle-Activator: org.silverbulleters.dt.silverlint.ui.BSLPlugin
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Require-Bundle: com.google.inject;bundle-version="[3.0.0,4.0.0)",

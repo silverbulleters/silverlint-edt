@@ -26,7 +26,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-import org.silverbulleters.dt.silverlint.ui.Activator;
+import org.silverbulleters.dt.silverlint.ui.BSLPlugin;
 
 public final class SonarLintImages {
 
@@ -113,17 +113,17 @@ public final class SonarLintImages {
   }
 
   private static URL getIconUrl(String key) {
-    return Activator.getDefault().getBundle().getEntry("icons/" + key);
+    return BSLPlugin.getDefault().getBundle().getEntry("icons/" + key);
   }
 
   private static Image createImage(String key) {
     createImageDescriptor(key);
-    ImageRegistry imageRegistry = Activator.getDefault().getImageRegistry();
+    ImageRegistry imageRegistry = BSLPlugin.getDefault().getImageRegistry();
     return imageRegistry.get(key);
   }
 
   private static ImageDescriptor createImageDescriptor(String key) {
-    ImageRegistry imageRegistry = Activator.getDefault().getImageRegistry();
+    ImageRegistry imageRegistry = BSLPlugin.getDefault().getImageRegistry();
     ImageDescriptor imageDescriptor = imageRegistry.getDescriptor(key);
     if (imageDescriptor == null) {
       URL url = getIconUrl(key);

@@ -6,12 +6,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.silverbulleters.dt.silverlint.PreferenceManager;
-import org.silverbulleters.dt.silverlint.ui.Activator;
+import org.silverbulleters.dt.silverlint.ui.BSLPlugin;
 
 public class PreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public PreferencePage() {
-		setPreferenceStore(Activator.getDefault().getCore().getInstancePreferenceStore());
+		setPreferenceStore(BSLPlugin.getDefault().getCore().getInstancePreferenceStore());
 	}
 
 	@Override

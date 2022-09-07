@@ -11,38 +11,17 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.silverbulleters.dt.silverlint.SilverCore;
 
-public class Activator extends AbstractUIPlugin {
+public class BSLPlugin extends AbstractUIPlugin {
 
 	public static final String PLUGIN_ID = SilverCore.PLUGIN_ID; //$NON-NLS-1$
 
-	private static Activator plugin;
+	private static BSLPlugin plugin;
 
 	private BundleContext bundleContext;
-	private IPreferenceStore preferenceStore;
 	private SilverCore core;
 
-	public static Activator getDefault() {
+	public static BSLPlugin getDefault() {
 		return plugin;
-	}
-
-	public static void log(IStatus status) {
-		plugin.getLog().log(status);
-	}
-
-	public static void logError(Throwable throwable) {
-		log(createErrorStatus(throwable.getMessage(), throwable));
-	}
-
-	public static IStatus createErrorStatus(String message, Throwable throwable) {
-		return new Status(IStatus.ERROR, PLUGIN_ID, 0, message, throwable);
-	}
-
-	public static IStatus createWarningStatus(String message) {
-		return new Status(IStatus.WARNING, PLUGIN_ID, 0, message, null);
-	}
-
-	public static IStatus createWarningStatus(final String message, Exception throwable) {
-		return new Status(IStatus.WARNING, PLUGIN_ID, 0, message, throwable);
 	}
 
 	@Override
@@ -63,10 +42,6 @@ public class Activator extends AbstractUIPlugin {
 
 	public BundleContext getBundleContext() {
 		return bundleContext;
-	}
-
-	public IPreferenceStore getPreferenceStore() {
-		return preferenceStore;
 	}
 
 	public SilverCore getCore() {

@@ -39,7 +39,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
-import org.silverbulleters.dt.silverlint.ui.Activator;
+import org.silverbulleters.dt.silverlint.ui.BSLPlugin;
 import org.silverbulleters.dt.silverlint.ui.utils.SonarLintRuleBrowser;
 
 public class RuleDescriptionWebView extends ViewPart implements ISelectionListener {
@@ -180,7 +180,7 @@ public class RuleDescriptionWebView extends ViewPart implements ISelectionListen
 		}
 		
 		var project = projects[0];
-		var core = Activator.getDefault().getCore();
+		var core = BSLPlugin.getDefault().getCore();
 		var service = core.getLintManager().getService(project);
 		var ruleDetails = service.getRuleDescription(ruleKey);
 		browser.updateRule(ruleDetails);

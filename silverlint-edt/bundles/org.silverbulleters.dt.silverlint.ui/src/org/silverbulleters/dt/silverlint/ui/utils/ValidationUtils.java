@@ -6,6 +6,7 @@ package org.silverbulleters.dt.silverlint.ui.utils;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
+import org.silverbulleters.dt.silverlint.SilverCore;
 
 import com._1c.g5.v8.dt.bsl.model.Module;
 import com._1c.g5.v8.dt.bsl.validation.CustomValidationMessageAcceptor;
@@ -26,6 +27,7 @@ public final class ValidationUtils {
 			offsetParams = getOffsetByRange(issue, document);
 		} catch (BadLocationException e) {
 			System.out.println(e.getMessage());
+            SilverCore.logError(e);
 			return;
 		}
 

@@ -51,6 +51,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.silverbulleters.dt.silverlint.SilverCore;
 import org.sonarsource.sonarlint.core.client.api.common.RuleDetails;
 import org.sonarsource.sonarlint.core.client.api.connected.ConnectedRuleDetails;
 
@@ -170,6 +171,8 @@ public class SonarLintRuleBrowser extends Composite implements IPropertyChangeLi
 					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(loc));
 				} catch (PartInitException | MalformedURLException e) {
 					System.out.println("Unable to open URL: " + loc);
+                    SilverCore.logError("Unable to open URL: " + loc);
+                    SilverCore.logError(e);
 				}
 			}
 		});

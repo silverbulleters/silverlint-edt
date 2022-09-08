@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.silverbulleters.dt.silverlint.SilverCore;
 import org.silverbulleters.dt.silverlint.project.ProjectSetting;
 import org.sonarsource.sonarlint.core.ConnectedSonarLintEngineImpl;
 import org.sonarsource.sonarlint.core.client.api.common.Language;
@@ -53,6 +54,7 @@ public class LintService {
 			currentConnection.updateProject(serverConfiguration, projectSetting.getProjectKey(), null);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+            SilverCore.logError(e);
 			return;
 		}
 		this.connection = currentConnection;
@@ -61,6 +63,7 @@ public class LintService {
 			connection.start();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+            SilverCore.logError(e);
 			connection = null;
 		}
 	}
@@ -71,6 +74,7 @@ public class LintService {
 				connection.stop(false);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
+                SilverCore.logError(e);
 			}
 			connection = null;
 		}
@@ -121,6 +125,7 @@ public class LintService {
 			futureTask.get(timeoutInSeconds, TimeUnit.SECONDS);
 		} catch (Exception e) {
 			e.printStackTrace();
+            SilverCore.logError(e);
 			futureTask.cancel(true);
 		}
 		threadpool.shutdown();

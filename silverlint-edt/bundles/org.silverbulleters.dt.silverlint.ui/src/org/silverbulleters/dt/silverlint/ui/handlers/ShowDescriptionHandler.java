@@ -11,7 +11,7 @@ import org.eclipse.core.runtime.Adapters;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-
+import org.silverbulleters.dt.silverlint.SilverCore;
 import org.silverbulleters.dt.silverlint.ui.views.RuleDescriptionWebView;
 
 public class ShowDescriptionHandler extends AbstractHandler {
@@ -39,6 +39,7 @@ public class ShowDescriptionHandler extends AbstractHandler {
 	          view.setInput(marker);
 	        } catch (Exception e) {
 	          System.out.println(e.getMessage());
+              SilverCore.logError(e);
 	        }
 	    }
 		return null;

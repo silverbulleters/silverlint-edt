@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
@@ -22,27 +20,16 @@ public class PreferenceManager {
 	private final String DEFAULT_SONAR_URL = "http://localhost:9000/";
 	
 	private IPreferenceStore preferenceStore;
-	private IPropertyChangeListener listener;
 	private Map<IProject, IPreferenceStore> storeByProjects = Collections.synchronizedMap(new HashMap<>());
 	
 	public PreferenceManager(String pluginId) {
 		this.pluginId = pluginId;
-		
-		listener = new IPropertyChangeListener() {		
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-				SilverCore.getCore().getLintManager().stopAll();
-				// FIXME: происходит несколько раз. Переделать
-				initialize();
-			}
-		};
 	}
 	
 	public void initialize() {
 		preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, pluginId);
 		preferenceStore.setDefault(SONAR_URL, DEFAULT_SONAR_URL);
 		preferenceStore.setDefault(SONAR_TOKEN, "");
-		preferenceStore.addPropertyChangeListener(listener);
 	}
 	
 	public IPreferenceStore getStoreByProject(IProject project) {

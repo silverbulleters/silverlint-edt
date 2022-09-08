@@ -23,6 +23,7 @@ public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPro
 	private IProject project;
 
     private String keyValue = "";
+    private String keyValueOriginal = "";
 
 	@Override
 	protected Control createContents(Composite parent) {
@@ -57,13 +58,19 @@ public class ProjectPreferencePage extends PropertyPage implements IWorkbenchPro
 		project = getElement().getAdapter(IProject.class);
 		setPreferenceStore(preferenceManager.getStoreByProject(project));
         keyValue = getPreferenceStore().getString(PreferenceManager.SONAR_PROJECT_KEY);
+        keyValueOriginal = getPreferenceStore().getString(PreferenceManager.SONAR_PROJECT_KEY);
 	}
 
     @Override
     public boolean performOk() {
-        getPreferenceStore().setValue(PreferenceManager.SONAR_PROJECT_KEY, keyValue);
-        core.getLintManager().stopByProject(project);
-        SilverCore.logInfo("Изменен ключ проекта: " + keyValue);
+
+        if (!keyValueOriginal.equals(keyValue)) {
+            getPreferenceStore().setValue(PreferenceManager.SONAR_PROJECT_KEY, keyValue);
+            SilverCore.logInfo("Установлен ключ проекта: "
+					+ getPreferenceStore().getString(PreferenceManager.SONAR_PROJECT_KEY));
+            core.getLintManager().stopByProject(project);
+        }
+
         return super.performOk();
     }
 

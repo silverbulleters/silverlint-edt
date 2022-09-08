@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.2.qualifier
 Bundle-SymbolicName: org.silverbulleters.dt.silverlint;singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -18,7 +18,7 @@ Require-Bundle: com._1c.g5.v8.dt.bsl;bundle-version="17.0.0",
  org.eclipse.core.runtime;bundle-version="3.15.300"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.silverbulleters.dt.silverlint
-Export-Package: org.silverbulleters.dt.silverlint;version="0.1.1",
+Export-Package: org.silverbulleters.dt.silverlint;version="0.1.2",
  org.silverbulleters.dt.silverlint.project,
  org.silverbulleters.dt.silverlint.sonarlint
 Import-Package: com._1c.g5.v8.dt.metadata.mdclass;version="8.3.0",

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.2.qualifier
 Bundle-SymbolicName: org.silverbulleters.dt.silverlint.ui;singleton:=true
 Bundle-Activator: org.silverbulleters.dt.silverlint.ui.BSLPlugin
 Bundle-ActivationPolicy: lazy
@@ -25,7 +25,7 @@ Import-Package: com._1c.g5.v8.dt.bsl.model;version="3.0.0",
  org.antlr.stringtemplate;version="[3.2.0,4.0.0)",
  org.eclipse.core.runtime;version="[3.4.0,4.0.0)",
  org.osgi.framework;version="[1.8.0,2.0.0)",
- org.silverbulleters.dt.silverlint;version="0.1.1",
+ org.silverbulleters.dt.silverlint;version="0.1.2",
  org.sonarsource.sonarlint.core;version="4.14.1",
  org.sonarsource.sonarlint.core.client.api.common;version="4.14.1.SNAPSHOT",
  org.sonarsource.sonarlint.core.client.api.common.analysis;version="4.14.1.SNAPSHOT"

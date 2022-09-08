@@ -6,9 +6,9 @@
   <parent>
     <groupId>org.silverbulleters.dt.silverlint</groupId>
     <artifactId>bundles</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.2-SNAPSHOT</version>
   </parent>
   <artifactId>org.silverbulleters.dt.silverlint</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.2-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

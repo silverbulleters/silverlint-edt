@@ -2,7 +2,7 @@
 <feature
       id="org.silverbulleters.dt.silverlint.feature"
       label="%featureName"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="%providerName"
       license-feature="org.eclipse.license"
       license-feature-version="2.0.2.qualifier">
@@ -23,14 +23,14 @@
          id="org.silverbulleters.dt.silverlint"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"
+         version="0.1.2.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.silverbulleters.dt.silverlint.ui"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"
+         version="0.1.2.qualifier"
          unpack="false"/>
 
 </feature>

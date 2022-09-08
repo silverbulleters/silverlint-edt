@@ -7,13 +7,13 @@
   <parent>
     <groupId>org.silverbulleters.dt.silverlint</groupId>
     <artifactId>bom</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.2-SNAPSHOT</version>
     <relativePath>./bom/pom.xml</relativePath>
   </parent>
 
   <groupId>org.silverbulleters.dt.silverlint</groupId>
   <artifactId>parent</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Build project</name>

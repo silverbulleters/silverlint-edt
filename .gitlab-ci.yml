@@ -18,10 +18,7 @@ build:
     - echo "<settingsSecurity><master>${MAVEN_MASTER}</master></settingsSecurity>" > /root/.m2/settings-security.xml 
   script:
     - cd silverlint-edt
-    - export MAVEN_OPTS=
-    - mvn ${MAVEN_CLI_OPTS} clean dependency:copy@get-lombok
-    - export MAVEN_OPTS=-javaagent:target/lombok.jar=ECJ
-    - mvn ${MAVEN_CLI_OPTS} verify -DskipTests
+    - mvn ${MAVEN_CLI_OPTS} clean verify -DskipTests
   artifacts:
     expire_in: 2 weeks
     paths:
